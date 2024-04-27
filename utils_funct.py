@@ -126,8 +126,6 @@ def scala_a_255(magnitude):
 
 
 
-# suca
-
 def create_image_with_moving_block(size, block_size, move_distance):
     # Create an image with a black background
     image = np.zeros((size, size), dtype=np.uint8)

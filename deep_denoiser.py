@@ -12,6 +12,16 @@ from utils import utils_image as util
 
 
 """
+
+COSA FA: 
+
+Prende le immagini di una cartella e le denoisa usando le impostazioni che ci sono all'inizio
+
+"""
+
+
+
+"""
 Spyder (Python 3.7)
 PyTorch 1.6.0
 Windows 10 or Linux
@@ -65,7 +75,7 @@ def main(nome):
 
     model_pool = 'model_zoo'             # fixed
     testsets = 'TestSet'                # fixed
-    results = 'no_filter'                  # fixed
+    results = 'rumore_estratto'                  # fixed
     task_current = 'dn'                  # 'dn' for denoising
     result_name = testset_name + '_' + task_current + '_' + model_name
 
@@ -163,12 +173,15 @@ def main(nome):
     #ave_ssim = sum(test_results['ssim']) / len(test_results['ssim'])
     #logger.info('Average PSNR/SSIM(RGB) - {} - PSNR: {:.2f} dB; SSIM: {:.4f}'.format(result_name, ave_psnr, ave_ssim))
 
+dio = os.listdir("rumore_estratto")
 
 if __name__ == '__main__':
-    lista_cartelle = os.listdir("./prova_replica/output")
+    lista_cartelle = os.listdir("./TestSet")
     #lista_cartelle = ["biggan_512"]
     for i in lista_cartelle:
         print(i)
-        if i == "biggan_256":
-            if os.path.isdir(os.path.join("./prova_replica/output", i)):
-                main(i)
+        if i == ".DS_Store" or i in dio:
+            pass
+        else:
+            #if os.path.isdir(os.path.join("./prova_replica/output", i)):
+            main(i)

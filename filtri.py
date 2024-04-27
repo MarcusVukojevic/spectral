@@ -2,8 +2,9 @@ import cv2
 import numpy as np
 from PIL import Image
 from scipy.ndimage import gaussian_filter
-from skimage import io, img_as_float
+from skimage import io, img_as_float, restoration
 import pywt
+from scipy.signal import wiener
 
 def median_filtering(img_path, kernel_size=5):
     image = cv2.imread(img_path, cv2.IMREAD_GRAYSCALE)
@@ -78,4 +79,28 @@ def wavelet_denoise(image, wavelet='db1', level=1):
     # Clip values to be in the range [0, 1]
     denoised_image = np.clip(denoised_image, 0, 1)
     
-    return denoised_image
+
+    residual = image - denoised_image
+    return residual
+
+
+def non_local_means_filter(image_path):
+    
+    image = io.imread(image_path, as_gray=True)
+    
+
+    sigma_est = np.mean(restoration.estimate_sigma(image))
+    denoised_image = restoration.denoise_nl_means(image, h=1.15 * sigma_est, fast_mode=True,
+                                                patch_size=5, patch_distance=6)
+    
+    residual = image - denoised_image
+    return residual
+
+
+def wiener_filter(image_path):
+    image = cv2.imread(image_path, 0)
+    image = image.astype(float)
+    filtered_image = wiener(image, (5, 5))  
+
+    residual = image - filtered_image
+    return residual
