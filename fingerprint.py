@@ -42,14 +42,14 @@ def find_fingerprint(image,step):
 
 def bandpass_filter(image):
     # Kernel per il filtro passa-basso (media)
-    '''
+    """
     low_threshold = 10
     high_threshold = 9
     lowpass_kernel = np.ones((low_threshold, low_threshold)) / (low_threshold * low_threshold)
     
     # Applicazione del filtro passa-basso
     lowpass_image = ndimage.convolve(image, lowpass_kernel)
-    '''
+    """
     # Kernel per il filtro passa-alto
     highpass_kernel = np.array([[-1, -1, -1],
                                 [-1,  8, -1],

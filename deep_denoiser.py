@@ -74,8 +74,8 @@ def main(nome):
         n_channels = 1                   # 1 for grayscale image
 
     model_pool = 'model_zoo'             # fixed
-    testsets = 'TestSet'                # fixed
-    results = 'rumore_estratto'                  # fixed
+    testsets = 'prova_low_rumore' #'TestSet'                # fixed
+    results = 'prova_low_rumore_estratto'                  # fixed
     task_current = 'dn'                  # 'dn' for denoising
     result_name = testset_name + '_' + task_current + '_' + model_name
 
@@ -173,10 +173,10 @@ def main(nome):
     #ave_ssim = sum(test_results['ssim']) / len(test_results['ssim'])
     #logger.info('Average PSNR/SSIM(RGB) - {} - PSNR: {:.2f} dB; SSIM: {:.4f}'.format(result_name, ave_psnr, ave_ssim))
 
-dio = os.listdir("rumore_estratto")
+dio = []#os.listdir("rumore_estratto")
 
 if __name__ == '__main__':
-    lista_cartelle = os.listdir("./TestSet")
+    lista_cartelle = os.listdir("./prova_low_rumore")
     #lista_cartelle = ["biggan_512"]
     for i in lista_cartelle:
         print(i)
