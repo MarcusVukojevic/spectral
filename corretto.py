@@ -14,7 +14,7 @@ lista_folders = [ "TestSet/dalle-mini_valid",  "TestSet/dalle_2", "TestSet/eg3d"
                   "TestSet/stylegan3_t_ffhqu_1024x1024" ,  "TestSet/stylegan2_afhqv2_512x512",  "TestSet/biggan_512"]
 '''
 lista_folders = os.listdir("TestSet")
-lista_folders = ["biggan_256"]
+#lista_folders = ["biggan_256"]
 
 for j in lista_folders:
     if os.path.isdir(os.path.join("TestSet/", j)) and j != "dalle_2":
@@ -95,5 +95,5 @@ for j in lista_folders:
         
         plt.imshow(finale)
         plt.title(f'{j}'), plt.xticks([]), plt.yticks([])
-        plt.savefig(f'{j}.png')
+        plt.savefig(f'plots_deep_denoiser/{j}.png')
         
