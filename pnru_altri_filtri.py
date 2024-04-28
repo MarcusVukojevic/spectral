@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 
 
 cartella_input = os.listdir("TestSet")#"biggan_512"
-cartella_target = "plots_altri_filtri/"
+cartella_target = "plots_altri_filtri_reverse/"
 
 
 for cartella in cartella_input:
@@ -55,4 +55,4 @@ for cartella in cartella_input:
         magnitude_spectrum = 20 * np.log(np.abs(f_shift))
         plt.imshow(magnitude_spectrum)
         plt.title(f'{i[1]}'), plt.xticks([]), plt.yticks([])
-        plt.savefig(f'{cartella_target}{i[1]}_{cartella}.png')
+        plt.savefig(f'{cartella_target}{cartella}_{i[1]}.png')
